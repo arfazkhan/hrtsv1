@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status - Patient Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Import your CSS file here -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        header {
+            font-size: .8rem;
+            color: white;
+            padding: 1.2rem;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            background-color: #191d2b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 30vh;
+        }
+
+        header p {
+            color: #00ff6a;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            width: 95%;
+            padding: 20px;
+        }
+
+        .container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .container th, .container td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .container th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .container tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .container tr:hover {
+            background-color: #ddd;
+        }
+
+        .filter-btn {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h2>Status</h2>
+            <p>Filter patients by status</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <button class="filter-btn" id="active-filter">Active Patients</button>
+            <button class="filter-btn" id="inactive-filter">Inactive Patients</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Blood Group</th>
+                        <th>Doctor Assigned</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="patient-table-body">
+                    <!-- Populate this with patients dynamically -->
+                    <tr>
+                        <td>John Doe</td>
+                        <td>35</td>
+                        <td>O+</td>
+                        <td>Dr. Smith</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>42</td>
+                        <td>A-</td>
+                        <td>Dr. Johnson</td>
+                        <td>Inactive</td>
+                    </tr>
+                    <!-- More patient rows -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        document.getElementById('active-filter').addEventListener('click', function () {
+            filterPatients('active');
+        });
+
+        document.getElementById('inactive-filter').addEventListener('click', function () {
+            filterPatients('inactive');
+        });
+
+        function filterPatients(status) {
+            var rows = document.getElementById('patient-table-body').getElementsByTagName('tr');
+            for (var i = 0; i < rows.length; i++) {
+                var statusCell = rows[i].getElementsByTagName('td')[4];
+                if (status === 'active' && statusCell.innerText !== 'Active') {
+                    rows[i].style.display = 'none';
+                } else if (status === 'inactive' && statusCell.innerText !== 'Inactive') {
+                    rows[i].style.display = 'none';
+                } else {
+                    rows[i].style.display = '';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

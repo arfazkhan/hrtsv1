@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="static/add_patient.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div>
+            <h2>Patient Management System</h2>
+            <p>Fill the form below to add a new patient record</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <div>
+                <!-- <button onclick="location.href='/add_doctor/'">Add New Doctor</button> -->
+                <button onclick="location.href='/view_patients/'">View Patients</button>
+
+            </div>    
+            <form action="/" method="POST" id="form" enctype="multipart/form-data">
+                <!-- {{ csrf_token() }} -->
+                <input style="font-size: 1px;" type="hidden" name="csrf_token" value="{{ csrf_token() }}" >
+                <div class="form-control text">
+                    <label for="firstname" class="label">First name</label>
+                    <input class="input" type="text" name="firstname" id="firstname" placeholder="First name" required>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control text">
+                    <label for="lastname" class="label">Last name</label>
+                    <input class="input" type="text" name="lastname" id="lastname" placeholder="Last name" required>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control text">
+                    <label for="email" class="label">Email</label>
+                    <input class="input" type="email" name="email" id="email" placeholder="E-mail Address" required>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control text">
+                    <label for="phone" class="label">Phone</label>
+                    <input class="input" type="tel" name="phone" id="phone" placeholder="Phone Number" required>
+                    <small>Error message</small>
+                </div>
+
+                <div class="form-control text">
+                    <label for="dob" class="label">Date of Birth</label>
+                    <input class="input" type="date" name="dob" id="dob" required>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control text">
+                    <label for="address" class="label">Address</label>
+                    <input class="input" type="text" name="address" id="address" placeholder="Address" required>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control text">
+                    <label for="city" class="label">City</label>
+                    <input class="input" type="text" name="city" id="city" placeholder="City" required>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control text">
+                    <label for="state" class="label">State</label>
+                    <input class="input" type="text" name="state" id="state" placeholder="State" required>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control text">
+                    <label for="zipcode" class="label">Zip Code</label>
+                    <input class="input" type="text" name="zipcode" id="zipcode" placeholder="Zip Code" required>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control select">
+                    <label for="bloodgroup" class="label">Blood Group</label>
+                    <select class="input" name="bloodgroup" id="bloodgroup" required>
+                        <option value="" selected disabled>Select Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control select">
+                    <label for="gender" class="label">Gender</label>
+                    <select name="gender" id="gender" required>
+                        <option value="" selected disabled>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <small>Error message</small>
+                </div>
+          
+                <div class="form-control select">
+                    <label for="doctor" class="label">Doctor Assigned</label>
+                    <select class="input" name="doctor" id="doctor" required>
+                        <option value="" selected disabled>Select Doctor</option>
+                        <option value="Dr. Smith">Dr. Smith</option>
+                        <option value="Dr. Johnson">Dr. Johnson</option>
+                        <option value="Dr. Williams">Dr. Williams</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                    <small>Error message</small>
+                </div>
+                
+                
+                
+                <br>
+                <div class="form-control text">
+                    <label for="prevcondition" class="label">Previous Medical Condition</label>
+                    <textarea name="prevcondition" id="prevcondition" cols="30" rows="5" placeholder="Previous medical condition"></textarea>
+                    <small>Error message</small>
+                </div>
+                <br>
+                <div class="form-control least">
+                    <label for="patientimage" class="label">Upload Patient Image</label>
+                    <input type="file" id="patientimage" name="patientimage" accept="image/*" required>
+                    <small>Error message</small>
+                </div>
+                <br>
+                <button type="submit">Add Patient</button>
+            </form>
+        </section>
+    </main>
+    <script src="static/add_patient.js"></script>
+</body>
+</html>

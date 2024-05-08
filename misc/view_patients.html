@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Patients - Patient Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Import your CSS file here -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        header {
+            font-size: .8rem;
+            color: white;
+            padding: 1.2rem;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            background-color: #191d2b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 30vh;
+        }
+
+        header p {
+            color: #00ff6a;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            width: 95%;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .status-btn {
+            background-color: #00dd5c;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .status-btn.inactive {
+            background-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h2>View Patients</h2>
+            <p>Here is the list of added patients</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Blood Group</th>
+                        <th>Doctor Assigned</th>
+                        <th>Medical History</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>John Doe</td>
+                        <td>35</td>
+                        <td>Male</td>
+                        <td>A+</td>
+                        <td>Dr. Jane Smith</td>
+                        <td><a href="#" download>Download PDF</a></td>
+                        <td><button class="status-btn">Active</button></td>
+                    </tr>
+                    <!-- Add more patients here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        const statusBtns = document.querySelectorAll('.status-btn');
+
+        statusBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('inactive');
+                if (btn.textContent === 'Active') {
+                    btn.textContent = 'Inactive';
+                } else {
+                    btn.textContent = 'Active';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
